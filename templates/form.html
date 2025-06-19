@@ -1,88 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Gerador de Etiquetas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 40px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            margin-top: 25px;
-            padding: 12px;
-            width: 100%;
-            background-color: #2d89e5;
-            color: white;
-            border: none;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #1b6ec2;
-        }
-    </style>
+    <title>Gerar Etiqueta</title>
 </head>
 <body>
-    <h1>Gerador de Etiquetas</h1>
+    <h1>Gerar Etiqueta de Envio</h1>
     <form action="/gerar_etiqueta" method="post">
-        <h2>📦 Informações do Produto</h2>
-        <label for="produto">Nome do Produto (ex: Livro, Bíblia):</label>
-        <input type="text" id="produto" name="produto" required>
+        <label>Remetente:</label>
+        <input type="text" name="remetente" required><br><br>
 
-        <h2>📤 Remetente</h2>
-        <label for="remetente_nome">Nome:</label>
-        <input type="text" id="remetente_nome" name="remetente_nome" required>
+        <label>Endereço Remetente:</label>
+        <input type="text" name="endereco_remetente" required><br><br>
 
-        <label for="remetente_endereco">Endereço:</label>
-        <input type="text" id="remetente_endereco" name="remetente_endereco" required>
+        <label>Destinatário:</label>
+        <input type="text" name="destinatario" required><br><br>
 
-        <label for="remetente_cep">CEP:</label>
-        <input type="text" id="remetente_cep" name="remetente_cep" required>
+        <label>Endereço Destinatário:</label>
+        <input type="text" name="endereco_destinatario" required><br><br>
 
-        <h2>📥 Destinatário</h2>
-        <label for="destinatario_nome">Nome:</label>
-        <input type="text" id="destinatario_nome" name="destinatario_nome" required>
+        <label>Observação (opcional):</label>
+        <input type="text" name="observacao" value="CTT - LIVROS"><br><br>
 
-        <label for="destinatario_endereco">Endereço:</label>
-        <input type="text" id="destinatario_endereco" name="destinatario_endereco" required>
-
-        <label for="destinatario_cep">CEP:</label>
-        <input type="text" id="destinatario_cep" name="destinatario_cep" required>
-
-        <button type="submit">Gerar Etiqueta</button>
+        <button type="submit">Gerar Etiqueta (PDF)</button>
     </form>
 </body>
 </html>
