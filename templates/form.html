@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-    <h1>Gerador de Etiquetas (Remetente e Destinatário)</h1>
+    <h1>Gerador de Etiquetas</h1>
     <form action="/gerar" method="post">
         <h2>Remetente</h2>
         <label for="remetente_nome">Nome</label>
@@ -59,6 +59,9 @@
 
         <label for="destinatario_endereco">Endereço</label>
         <input type="text" name="destinatario_endereco" required>
+
+        <label for="produto">Produto (ex: Livro, Bíblia, etc.)</label>
+        <input type="text" name="produto" required>
 
         <button type="submit">Gerar Etiqueta</button>
     </form>
