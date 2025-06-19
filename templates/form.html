@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Gerador de Etiquetas</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: block; margin-top: 10px; }
-        input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; }
-        button { margin-top: 15px; padding: 10px 20px; }
-    </style>
 </head>
 <body>
-    <h2>Gerador de Etiquetas</h2>
+    <h1>Gerador de Etiquetas (10x15cm)</h1>
     <form method="post">
-        <label>Remetente:</label>
-        <input type="text" name="remetente" required>
+        <label>Remetente:</label><br>
+        <textarea name="remetente" required rows="4" cols="50"></textarea><br><br>
 
-        <label>Destinatário:</label>
-        <input type="text" name="destinatario" required>
+        <label>Destinatário:</label><br>
+        <textarea name="destinatario" required rows="4" cols="50"></textarea><br><br>
 
-        <label>Produto (ex: Livro):</label>
-        <input type="text" name="produto" value="Livro" required>
+        <label>Transportadora:</label><br>
+        <input type="text" name="transportadora"><br><br>
 
-        <label>Transportadora:</label>
-        <input type="text" name="transportadora">
+        <label>Conteúdo (ex: livros):</label><br>
+        <input type="text" name="conteudo"><br><br>
 
-        <button type="submit">Gerar PDF</button>
+        <button type="submit">Gerar Etiqueta</button>
     </form>
 </body>
 </html>
-adiciona form.html na pasta templates
