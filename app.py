@@ -5,7 +5,7 @@ import io
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def form():
+def home():
     if request.method == 'POST':
         remetente = request.form['remetente']
         endereco_remetente = request.form['endereco_remetente']
@@ -18,35 +18,27 @@ def form():
     return render_template('form.html')
 
 def gerar_pdf(remetente, endereco_remetente, destinatario, endereco_destinatario, transportadora):
-    pdf = FPDF(orientation='P', unit='mm', format='A4')
+    pdf = FPDF()
     pdf.add_page()
 
-    largura = 190  # largura da folha (210 mm menos margens)
-    altura_etiqueta = 135  # altura de cada etiqueta para caber duas na página
-
-    for y in [10, 150]:  # posições verticais para 2 etiquetas
+    for y in [10, 150]:
         pdf.set_xy(10, y)
-        pdf.set_font('Arial', 'B', 14)
-        pdf.cell(w=largura, h=10, txt="REMETENTE", ln=1)
-
-        pdf.set_font('Arial', '', 12)
-        pdf.cell(w=largura, h=8, txt=remetente, ln=1)
-        pdf.cell(w=largura, h=8, txt=endereco_remetente, ln=1)
-
-        pdf.ln(4)
-        pdf.set_font('Arial', 'B', 14)
-        pdf.cell(w=largura, h=10, txt="DESTINATÁRIO", ln=1)
-
-        pdf.set_font('Arial', '', 12)
-        pdf.cell(w=largura, h=8, txt=destinatario, ln=1)
-        pdf.cell(w=largura, h=8, txt=endereco_destinatario, ln=1)
+        pdf.set_font("Arial", 'B', 14)
+        pdf.cell(0, 10, "REMETENTE", ln=1)
+        pdf.set_font("Arial", '', 12)
+        pdf.cell(0, 8, remetente, ln=1)
+        pdf.cell(0, 8, endereco_remetente, ln=1)
 
         pdf.ln(4)
-        pdf.set_font('Arial', 'I', 12)
-        pdf.cell(w=largura, h=8, txt=f"{transportadora} - LIVRO", ln=1)
+        pdf.set_font("Arial", 'B', 14)
+        pdf.cell(0, 10, "DESTINATÁRIO", ln=1)
+        pdf.set_font("Arial", '', 12)
+        pdf.cell(0, 8, destinatario, ln=1)
+        pdf.cell(0, 8, endereco_destinatario, ln=1)
 
-        # borda ao redor da etiqueta
-        pdf.rect(10, y, largura, altura_etiqueta)
+        pdf.ln(4)
+        pdf.set_font("Arial", 'I', 12)
+        pdf.cell(0, 8, f"{transportadora} - LIVRO", ln=1)
 
     buffer = io.BytesIO()
     pdf.output(buffer)
