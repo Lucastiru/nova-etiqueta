@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Gerar Etiqueta</title>
 </head>
 <body>
     <h1>Gerar Etiqueta de Envio</h1>
-    <form action="/gerar_etiqueta" method="post">
+    <form method="post">
         <label>Remetente:</label>
-        <input type="text" name="remetente" required><br><br>
+        <input type="text" name="remetente"><br><br>
 
         <label>Endereço Remetente:</label>
-        <input type="text" name="endereco_remetente" required><br><br>
+        <input type="text" name="endereco_remetente"><br><br>
 
         <label>Destinatário:</label>
-        <input type="text" name="destinatario" required><br><br>
+        <input type="text" name="destinatario"><br><br>
 
         <label>Endereço Destinatário:</label>
-        <input type="text" name="endereco_destinatario" required><br><br>
+        <input type="text" name="endereco_destinatario"><br><br>
 
         <label>Observação (opcional):</label>
-        <input type="text" name="observacao" value="CTT - LIVROS"><br><br>
+        <input type="text" name="observacao"><br><br>
 
         <button type="submit">Gerar Etiqueta (PDF)</button>
     </form>
