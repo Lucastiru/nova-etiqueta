@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Etiquetas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin-top: 10px; }
+        input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h2>Gerador de Etiquetas</h2>
+    <form method="post">
+        <label>Remetente:</label>
+        <input type="text" name="remetente" required>
+
+        <label>Destinatário:</label>
+        <input type="text" name="destinatario" required>
+
+        <label>Produto (ex: Livro):</label>
+        <input type="text" name="produto" value="Livro" required>
+
+        <label>Transportadora:</label>
+        <input type="text" name="transportadora">
+
+        <button type="submit">Gerar PDF</button>
+    </form>
+</body>
+</html>
+adiciona form.html na pasta templates
