@@ -5,32 +5,40 @@ import io
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def form():
+def index():
     if request.method == 'POST':
         remetente = request.form.get('remetente')
         destinatario = request.form.get('destinatario')
         transportadora = request.form.get('transportadora')
-        tipo_mercadoria = request.form.get('tipo_mercadoria')
+        conteudo = request.form.get('conteudo')
 
-        pdf = FPDF()
+        pdf = FPDF(orientation='P', unit='mm', format=(105, 148))  # metade de uma A4
+        pdf.set_auto_page_break(auto=True, margin=15)
         pdf.add_page()
+        pdf.set_font("Arial", size=12)
 
-        for i in range(2):  # Duas etiquetas por folha
-            if i > 0:
-                pdf.set_y(150)
-            pdf.set_font("Arial", size=12)
-            pdf.cell(0, 10, f"Remetente: {remetente}", ln=True)
-            pdf.cell(0, 10, f"Destinatário: {destinatario}", ln=True)
-            pdf.cell(0, 10, f"Transportadora: {transportadora}", ln=True)
-            pdf.cell(0, 10, f"Tipo da mercadoria: {tipo_mercadoria}", ln=True)
-            pdf.ln(10)
+        pdf.cell(0, 10, "REMETENTE:", ln=True)
+        pdf.multi_cell(0, 10, remetente)
+        pdf.ln(5)
 
-        buffer = io.BytesIO()
-        pdf.output(buffer)
-        buffer.seek(0)
-        return send_file(buffer, as_attachment=True, download_name="etiquetas.pdf", mimetype='application/pdf')
+        pdf.cell(0, 10, "DESTINATÁRIO:", ln=True)
+        pdf.multi_cell(0, 10, destinatario)
+        pdf.ln(5)
 
-    return render_template('form.html')
+        if transportadora:
+            pdf.cell(0, 10, "TRANSPORTADORA:", ln=True)
+            pdf.multi_cell(0, 10, transportadora)
+            pdf.ln(5)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+        if conteudo:
+            pdf.cell(0, 10, "CONTEÚDO DA EMBALAGEM:", ln=True)
+            pdf.multi_cell(0, 10, conteudo)
+            pdf.ln(5)
+
+        output = io.BytesIO()
+        pdf.output(output)
+        output.seek(0)
+        return send_file(output, as_attachment=True, download_name="etiqueta.pdf")
+
+    return render_template("form.html")
+    
