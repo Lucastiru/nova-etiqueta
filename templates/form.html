@@ -1,69 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Gerador de Etiquetas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 40px;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: auto;
-        }
-        label {
-            font-weight: bold;
-        }
-        input {
-            width: 100%%;
-            padding: 10px;
-            margin: 10px 0 20px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>Gerar Etiqueta</title>
 </head>
 <body>
-    <h1>Gerador de Etiquetas</h1>
-    <form action="/gerar" method="post">
-        <h2>Remetente</h2>
-        <label for="remetente_nome">Nome</label>
-        <input type="text" name="remetente_nome" required>
+  <h1>Gerar Etiqueta PDF</h1>
+  <form method="POST">
+    <label for="remetente">Remetente:</label><br>
+    <textarea name="remetente" rows="5" cols="50" required></textarea><br><br>
 
-        <label for="remetente_endereco">Endereço</label>
-        <input type="text" name="remetente_endereco" required>
+    <label for="destinatario">Destinatário:</label><br>
+    <textarea name="destinatario" rows="5" cols="50" required></textarea><br><br>
 
-        <h2>Destinatário</h2>
-        <label for="destinatario_nome">Nome</label>
-        <input type="text" name="destinatario_nome" required>
+    <label for="produto">Nome do produto (ex: Livro):</label><br>
+    <input type="text" name="produto" required><br><br>
 
-        <label for="destinatario_endereco">Endereço</label>
-        <input type="text" name="destinatario_endereco" required>
-
-        <label for="produto">Produto (ex: Livro, Bíblia, etc.)</label>
-        <input type="text" name="produto" required>
-
-        <button type="submit">Gerar Etiqueta</button>
-    </form>
+    <input type="submit" value="Gerar PDF">
+  </form>
 </body>
 </html>
